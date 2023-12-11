@@ -1,0 +1,36 @@
+{% extends "store/navbar.html"%}
+
+{% load static%}
+
+{% block title%}
+    
+{% endblock%}
+
+{% block content%}
+
+    {% if products_data %}
+        <ul>
+            {% for product in products_data %}
+            
+                <li>
+                    
+                    {% for image in product.images %}
+                        <img src="{{ image }}" alt="Product Image">
+                    {% endfor %}
+                    <p>ID: {{ product.id }}</p>
+                    <p>Name: {{ product.title }}</p>
+                    <p>Category:{{product.category}}</p>
+                    <p>Price: ${{ product.price }}</p>
+                    <p>Description: {{ product.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="error-message">No products available.</p>
+    {% endif %}
+
+    {% if error_message %}
+        <p class="error-message">Error: {{ error_message }}</p>
+    {% endif %}
+
+{% endblock%}

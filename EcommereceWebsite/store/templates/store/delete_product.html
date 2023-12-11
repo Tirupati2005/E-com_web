@@ -1,0 +1,21 @@
+{% extends "store/navbar.html" %}
+
+{% block title %}
+
+    Confirm Deletion
+    
+{% endblock %}
+
+{% block content %}
+
+    <h2>Confirm Deletion</h2>
+
+    <p>Are you sure you want to delete "{{ product.name }}"?</p>
+    
+    <form method="post" class="product-form">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+        <a href="{% url 'product_list' %}">Cancel</a>
+    </form>
+
+{% endblock %}

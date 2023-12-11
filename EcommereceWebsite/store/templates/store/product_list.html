@@ -1,0 +1,30 @@
+{% extends "store/navbar.html"%}
+{% load static%}
+{% block title%}
+    
+{% endblock%}
+
+{% block content%}
+
+    {% if products %}
+        <ul>
+            {% for product in products %}
+            
+                <li>
+                    <p>ID: <a href="/edit/{{product.id}}">{{product.id}}</a></p>
+                    <p>Name: {{product.title}}</p>
+                    <p>Category: {{ product.category }}</p>
+                    <p>Price: ${{ product.price }}</p>
+                    <p>Description: {{ product.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="error-message">No products available.</p>
+    {% endif %}
+
+    {% if error_message %}
+        <p class="error-message">Error: {{ error_message }}</p>
+    {% endif %}
+
+{% endblock%}
